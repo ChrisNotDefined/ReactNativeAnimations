@@ -55,34 +55,30 @@ export default function App() {
 
   return (
     <>
-      <StatusBar backgroundColor="white" barStyle="dark-content"/>
+      <StatusBar backgroundColor="white" barStyle="dark-content" />
       <NavigationContainer ref={navRef}>
-        <Tab.Navigator
-          sceneContainerStyle={{
-            elevation: 10,
-            borderRadius: 20,
-            margin: 10,
-            padding: 10,
-          }}
-          tabBar={() => {}}
-          initialRouteName="Jelly"
-        >
-          <Tab.Screen name="Jelly" component={Jelly} />
-          <Tab.Screen name="Heart" component={Heart} />
-        </Tab.Navigator>
-
+        <View style={styles.routesContainer}>
+          <Tab.Navigator
+            sceneContainerStyle={styles.tabScene}
+            tabBar={() => {}}
+            initialRouteName="Jelly"
+          >
+            <Tab.Screen name="Jelly" component={Jelly} />
+            <Tab.Screen name="Heart" component={Heart} />
+          </Tab.Navigator>
+        </View>
         <View style={styles.aside}>
-          <Button
-            title="Heart Anim"
-            onPress={() => {
-              navRef.current?.navigate("Heart");
-            }}
-            color="darkred"
-          />
           <Button
             title="Jelly Anim"
             onPress={() => {
               navRef.current?.navigate("Jelly");
+            }}
+            color="darkred"
+          />
+          <Button
+            title="Heart Cards Anim"
+            onPress={() => {
+              navRef.current?.navigate("Heart");
             }}
             color="darkred"
           />
@@ -93,12 +89,21 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
+  routesContainer: {
+    borderRadius: 20,
+    margin: 5,
+    elevation: 10,
+    flex: 1,
+  },
+  tabScene: {
+    padding: 15,
+    borderRadius: 20,
+  },
   aside: {
     marginHorizontal: 20,
-    marginVertical: 50,
-    flexBasis: 100,
+    marginVertical: 40,
+    flexBasis: 80,
     display: "flex",
     justifyContent: "space-between",
-    backgroundColor: 'transparent'
   },
 });
